@@ -1,0 +1,92 @@
+/* =Variables
+-------------------------------------------------------------- */
+/* =Mixins
+-------------------------------------------------------------- */
+.border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.margin-bottom {
+  margin: 0 0 1em 0;
+}
+/*
+ * =Global
+ * =Structure
+ * =Typography
+ * =Responsive
+ * =Developer
+ */
+/* =Global
+-------------------------------------------------------------- */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* =Structure
+-------------------------------------------------------------- */
+#page {
+  margin: 0 auto;
+  padding: 0 10px;
+  width: 980px;
+}
+.main-navigation {
+  margin: 0 0 1em 0;
+}
+#primary {
+  float: left;
+  margin: 0 10px 1em 0;
+  width: 650px;
+}
+#secondary {
+  float: right;
+  margin: 0 0 1em 0;
+  width: 300px;
+}
+#colophon {
+  clear: both;
+  margin: 0 0 1em 0;
+}
+/* =Typography
+-------------------------------------------------------------- */
+/* =Responsive
+-------------------------------------------------------------- */
+@media all and (max-width: 768px) {
+  #page {
+    width: 748px;
+  }
+  #primary {
+    width: 418px;
+  }
+}
+@media all and (max-width: 480px) {
+  #page {
+    width: 460px;
+  }
+  #primary,
+  #secondary {
+    float: left;
+    margin-right: 0;
+    width: 440px;
+  }
+}
+@media all and (max-width: 320px) {
+  #primary,
+  #secondary {
+    float: left;
+    margin-right: 0;
+    width: 300px;
+  }
+}
+/* =Developer
+-------------------------------------------------------------- */
+#masthead,
+#primary,
+#secondary,
+#colophon {
+  outline: 1px solid red;
+}
+.widget-area {
+  background-color: pink;
+}

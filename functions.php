@@ -1,20 +1,20 @@
 <?php
 /**
- * _s functions and definitions
+ * Oomph functions and definitions
  *
- * @package _s
- * @since _s 1.0
+ * @package Oomph
+ * @since Oomph 1.0
  */
 
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
- * @since _s 1.0
+ * @since Oomph 1.0
  */
 if ( ! isset( $content_width ) )
 	$content_width = 640; /* pixels */
 
-if ( ! function_exists( '_s_setup' ) ):
+if ( ! function_exists( 'oomph_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -22,9 +22,9 @@ if ( ! function_exists( '_s_setup' ) ):
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  *
- * @since _s 1.0
+ * @since Oomph 1.0
  */
-function _s_setup() {
+function oomph_setup() {
 
 	/**
 	 * Custom template tags for this theme.
@@ -49,10 +49,10 @@ function _s_setup() {
 	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
-	 * If you're building a theme based on _s, use a find and replace
-	 * to change '_s' to the name of your theme in all the template files
+	 * If you're building a theme based on Oomph, use a find and replace
+	 * to change 'oomph' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( '_s', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'oomph', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head
@@ -68,7 +68,7 @@ function _s_setup() {
 	 * This theme uses wp_nav_menu() in one location.
 	 */
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', '_s' ),
+		'primary' => __( 'Primary Menu', 'oomph' ),
 	) );
 
 	/**
@@ -76,17 +76,17 @@ function _s_setup() {
 	 */
 	add_theme_support( 'post-formats', array( 'aside', ) );
 }
-endif; // _s_setup
-add_action( 'after_setup_theme', '_s_setup' );
+endif; // oomph_setup
+add_action( 'after_setup_theme', 'oomph_setup' );
 
 /**
  * Register widgetized area and update sidebar with default widgets
  *
- * @since _s 1.0
+ * @since Oomph 1.0
  */
-function _s_widgets_init() {
+function oomph_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'Sidebar', '_s' ),
+		'name' => __( 'Sidebar', 'oomph' ),
 		'id' => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
@@ -94,13 +94,14 @@ function _s_widgets_init() {
 		'after_title' => '</h1>',
 	) );
 }
-add_action( 'widgets_init', '_s_widgets_init' );
+add_action( 'widgets_init', 'oomph_widgets_init' );
 
 /**
  * Enqueue scripts and styles
  */
-function _s_scripts() {
+function oomph_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_enqueue_style( 'theme', get_template_directory_uri() . '/css/theme.css' );
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
 
@@ -112,7 +113,7 @@ function _s_scripts() {
 		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
 }
-add_action( 'wp_enqueue_scripts', '_s_scripts' );
+add_action( 'wp_enqueue_scripts', 'oomph_scripts' );
 
 /**
  * Implement the Custom Header feature
