@@ -28,6 +28,8 @@
  * @uses oomph_header_style()
  * @uses oomph_admin_header_style()
  * @uses oomph_admin_header_image()
+ * @todo Rework this function to remove WordPress 3.4 support when WordPress 3.6 is released.
+ *
  *
  * @package Oomph
  */
@@ -66,6 +68,7 @@ add_action( 'after_setup_theme', 'oomph_custom_header_setup' );
  * with previous versions, we will define our own version
  * of this function.
  *
+ * @todo Remove this function when WordPress 3.6 is released.
  * @return stdClass All properties represent attributes of the curent header image.
  *
  * @package Oomph
