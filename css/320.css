@@ -1,0 +1,10 @@
+/* =Responsive
+-------------------------------------------------------------- */
+@media all and (max-width: 320px) {
+  #primary,
+  #secondary {
+    float: left;
+    margin-right: 0;
+    width: 300px;
+  }
+}

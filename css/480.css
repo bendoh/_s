@@ -1,0 +1,13 @@
+/* =Responsive
+-------------------------------------------------------------- */
+@media all and (max-width: 480px) {
+  #page {
+    width: 460px;
+  }
+  #primary,
+  #secondary {
+    float: left;
+    margin-right: 0;
+    width: 440px;
+  }
+}

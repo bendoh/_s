@@ -1,0 +1,10 @@
+/* =Responsive
+-------------------------------------------------------------- */
+@media all and (max-width: 768px) {
+  #page {
+    width: 748px;
+  }
+  #primary {
+    width: 418px;
+  }
+}
