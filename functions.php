@@ -27,6 +27,11 @@ if ( ! function_exists( 'oomph_setup' ) ):
 function oomph_setup() {
 
 	/**
+	 * For VIP use.
+	 */
+	//require( get_template_directory() . '/inc/vip/vip.php' );
+
+	/**
 	 * Custom template tags for this theme.
 	 */
 	require( get_template_directory() . '/inc/template-tags.php' );
@@ -45,6 +50,16 @@ function oomph_setup() {
 	 * WordPress.com-specific functions and definitions
 	 */
 	//require( get_template_directory() . '/inc/wpcom.php' );
+
+	/**
+	 * Theme feature functions and definitions
+	 */
+	//require( get_template_directory() . '/inc/features/...' );
+
+	/**
+	 * Theme plugin functions and definitions
+	 */
+	//require( get_template_directory() . '/inc/plugins/...' );
 
 	/**
 	 * Make theme available for translation
