@@ -10,6 +10,13 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+.transition {
+	-webkit-transition: width 0.2s, ease;
+  -moz-transition:    width 0.2s, ease;
+  -ms-transition:     width 0.2s, ease;
+  -o-transition:      width 0.2s, ease;
+}
+
 
 .margin-bottom {
 	margin: 0 0 1em 0;
@@ -25,8 +32,10 @@
 
 /* =Global
 -------------------------------------------------------------- */
+// http://css-tricks.com/things-it-might-be-funuseful-to-try-the-universal-selector-on/
 * {
 	.border-box;
+	position: relative;
 }
 
 /* =Structure
@@ -95,10 +104,10 @@
 #primary,
 #secondary,
 #colophon {
-	outline: 1px solid red;
+	outline: 1px dashed #333;
 }
 .widget-area {
-	background-color: pink;
+	background-color: #f2f2f2;
 }
 
 

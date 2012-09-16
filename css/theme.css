@@ -7,6 +7,12 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.transition {
+  -webkit-transition: width 0.2s, ease;
+  -moz-transition: width 0.2s, ease;
+  -ms-transition: width 0.2s, ease;
+  -o-transition: width 0.2s, ease;
+}
 .margin-bottom {
   margin: 0 0 1em 0;
 }
@@ -17,25 +23,14 @@
  * =Responsive
  * =Developer
  */
-
-/*
- * Our relative REM font sizing formula...
- * size we want ( 20px ) / size we have set for base ( 10px ) = 2rem 
- *
- */
-
 /* =Global
 -------------------------------------------------------------- */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }
-
-body {
-  
-}
-
 /* =Structure
 -------------------------------------------------------------- */
 #page {
@@ -62,15 +57,14 @@ body {
 }
 /* =Typography
 -------------------------------------------------------------- */
-
 /* =Developer
 -------------------------------------------------------------- */
 #masthead,
 #primary,
 #secondary,
 #colophon {
-  outline: 1px solid red;
+  outline: 2px dashed #333;
 }
 .widget-area {
-  background-color: pink;
+  background-color: #f2f2f2;
 }

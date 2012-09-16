@@ -54,12 +54,14 @@ function oomph_setup() {
 	/**
 	 * Theme feature functions and definitions
 	 */
-	//require( get_template_directory() . '/inc/features/...' );
+	//require( get_template_directory() . '/inc/features/class-breadcrumbs.php' );
+	//require( get_template_directory() . '/inc/features/dynamic-lead/...' );
+	//require( get_template_directory() . '/inc/features/single-dynamic-carousel/...' );
 
 	/**
 	 * Theme plugin functions and definitions
 	 */
-	//require( get_template_directory() . '/inc/plugins/...' );
+	//require( get_template_directory() . '/inc/plugins/oomph-calendar' );
 
 	/**
 	 * Make theme available for translation
@@ -117,8 +119,15 @@ add_action( 'widgets_init', 'oomph_widgets_init' );
 function oomph_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 	wp_enqueue_style( 'theme', get_template_directory_uri() . '/css/theme.css' );
+	wp_enqueue_style( 'archive', get_template_directory_uri() . '/css/archive.css' );
+	wp_enqueue_style( 'single', get_template_directory_uri() . '/css/single.css' );
+	wp_enqueue_style( 'comments', get_template_directory_uri() . '/css/comments.css' );
+	//wp_enqueue_style( '768', get_template_directory_uri() . '/css/768.css' );
+	//wp_enqueue_style( '480', get_template_directory_uri() . '/css/480.css' );
+	//wp_enqueue_style( '320', get_template_directory_uri() . '/css/320.css' );
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
+	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array( 'jquery' ), '20120909', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
