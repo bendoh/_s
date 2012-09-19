@@ -34,9 +34,9 @@ get_header();
 							<?php edit_post_link( __( 'Edit', 'oomph' ), '<span class="sep"> | </span> <span class="edit-link">', '</span>' ); ?>
 						</div><!-- .entry-meta -->
 
-						<nav id="image-navigation">
-							<span class="previous-image"><?php previous_image_link( false, __( '&larr; Previous', 'oomph' ) ); ?></span>
-							<span class="next-image"><?php next_image_link( false, __( 'Next &rarr;', 'oomph' ) ); ?></span>
+						<nav id="image-navigation" class="site-navigation">
+							<span class="previous-image"><?php previous_image_link( false, __( '&larr; Previous', '_s' ) ); ?></span>
+							<span class="next-image"><?php next_image_link( false, __( 'Next &rarr;', '_s' ) ); ?></span>
 						</nav><!-- #image-navigation -->
 					</header><!-- .entry-header -->
 

@@ -3,7 +3,7 @@ Theme Name: Oomph
 Layout: Content-Sidebar-Sidebar
 */
 
-.site-content {
+#primary {
 	float: left;
 	width: 100%;
 }
