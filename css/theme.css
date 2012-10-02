@@ -39,7 +39,7 @@
   width: 980px;
 }
 .main-navigation {
-  margin: 0 0 1em 0;
+  margin: 1em 0;
 }
 #primary {
   float: left;
@@ -60,6 +60,7 @@
 /* =Developer
 -------------------------------------------------------------- */
 #masthead,
+.main-navigation,
 #primary,
 #secondary,
 #colophon {
