@@ -54,14 +54,7 @@ function oomph_setup() {
 	/**
 	 * Theme feature functions and definitions
 	 */
-	//require( get_template_directory() . '/inc/features/class-breadcrumbs.php' );
-	//require( get_template_directory() . '/inc/features/dynamic-lead/...' );
-	//require( get_template_directory() . '/inc/features/single-dynamic-carousel/...' );
-
-	/**
-	 * Theme plugin functions and definitions
-	 */
-	//require( get_template_directory() . '/inc/plugins/oomph-calendar' );
+	//require( get_template_directory() . '/inc/class-oomph-custom-post-type.php' );
 
 	/**
 	 * Make theme available for translation
@@ -69,7 +62,7 @@ function oomph_setup() {
 	 * If you're building a theme based on Oomph, use a find and replace
 	 * to change 'oomph' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'oomph', get_template_directory() . '/languages' );
+	//load_theme_textdomain( 'oomph', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head
@@ -125,6 +118,7 @@ function oomph_scripts() {
 	wp_enqueue_style( '768', get_template_directory_uri() . '/css/768.css' );
 	wp_enqueue_style( '480', get_template_directory_uri() . '/css/480.css' );
 	wp_enqueue_style( '320', get_template_directory_uri() . '/css/320.css' );
+	wp_enqueue_style( 'developer', get_template_directory_uri() . '/css/developer.css' );
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
 	wp_enqueue_script( 'theme', get_template_directory_uri() . '/js/theme.js', array( 'jquery' ), '20120909', true );
@@ -143,3 +137,59 @@ add_action( 'wp_enqueue_scripts', 'oomph_scripts' );
  * Implement the Custom Header feature
  */
 //require( get_template_directory() . '/inc/custom-header.php' );
+
+
+/** 
+ * DO NOT EDIT BELOW THIS LINE ==========================================/
+ */
+
+/*
+ * Placeholder class for radar_singleton that simulates a real object that does absolutely nothing
+ * but prevents any code that depends on a missing class from causing fatal errors
+ */
+class Oomph_Placeholder {
+	private $placeholder_class = '';
+	private $reason = '';
+
+	function __construct( $class, $reason ) {
+		$this->placeholder_class = $class;
+		$this->reason = $reason;
+	}
+
+	function __call( $method, $args ) {
+		return null;
+	}
+
+	function __get( $name ) {
+		return null;
+	}
+
+	function __set( $name, $value ) {
+		return null;
+	}
+}
+
+/*
+ * Create and return singleton instance of an object class.
+ * This should be used whenever a class needs a singleton
+ * instance. Mostly for syntax cleanliness. A clean syntax
+ * is a happy syntax. If the class is undefined or the singleton
+ * is occupied by an object of a different type, then throw a
+ * fatal error, because this should never happen.
+ *
+ * @param string $class - The class name, which will also become
+ *		the instance's global name
+ * @returns object
+ */
+function oomph_singleton( $class ) {
+	if ( ! class_exists( $class ) )
+		return new Oomph_Placeholder( $class, 'Class does not exist' );
+
+	if ( ! isset( $GLOBALS[ $class ] ) )
+		$GLOBALS[ $class ] = new $class;
+
+	if ( ! is_a( $GLOBALS[ $class ], $class ) )
+		return new Oomph_Placeholder( $class, "Singleton assertion failed: The global object is not of the type `$class`" );
+
+	return $GLOBALS[ $class ];
+}

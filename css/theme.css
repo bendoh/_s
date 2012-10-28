@@ -1,21 +1,3 @@
-/* =Variables
--------------------------------------------------------------- */
-/* =Mixins
--------------------------------------------------------------- */
-.border-box {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.transition {
-  -webkit-transition: width 0.2s, ease;
-  -moz-transition: width 0.2s, ease;
-  -ms-transition: width 0.2s, ease;
-  -o-transition: width 0.2s, ease;
-}
-.margin-bottom {
-  margin: 0 0 1em 0;
-}
 /*
  * =Global
  * =Structure
@@ -23,6 +5,7 @@
  * =Responsive
  * =Developer
  */
+ 
 /* =Global
 -------------------------------------------------------------- */
 * {
@@ -57,15 +40,3 @@
 }
 /* =Typography
 -------------------------------------------------------------- */
-/* =Developer
--------------------------------------------------------------- */
-#masthead,
-.main-navigation,
-#primary,
-#secondary,
-#colophon {
-  outline: 2px dashed #333;
-}
-.widget-area {
-  background-color: #f2f2f2;
-}

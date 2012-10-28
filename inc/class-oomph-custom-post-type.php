@@ -1,18 +1,14 @@
 <?php
-/* myPluginClass, myCustomPostType, myCustomTaxonomy, myCustomMeta
- *
- *
- */
 
-class MyPluginClass {
+class Oomph_Class {
 
-  public $some_key_value = '_some_key_value';
+  var $some_key_value = '_some_key_value';
   
-  public function __construct() {
-    add_action( 'init', array( $this, 'myCustomPostType_create' ) );
-    add_action( 'init', array( $this, 'myCustomTaxonomy_create' ) );     
-    add_action( 'add_meta_boxes', array( $this, 'myCustomPostType_add_meta_boxes' ) );  
-    add_action( 'save_post', array( $this, 'myCustomPostType_save_post' ) );
+  function __construct() {
+    add_action( 'init', array( $this, 'create_post_type' ) );
+    add_action( 'init', array( $this, 'create_taxonomy' ) );     
+    add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );  
+    add_action( 'save_post', array( $this, 'save_post' ) );
   }
 
   /**
@@ -21,21 +17,21 @@ class MyPluginClass {
    * @link http://codex.wordpress.org/Function_Reference/register_post_type
    *
   **/
-  function myCustomPostType_create() {
+  function create_post_type() {
     $labels = array(
-      'name' => _x('Books', 'post type general name', 'your_text_domain'),
-      'singular_name' => _x('Book', 'post type singular name', 'your_text_domain'),
-      'add_new' => _x('Add New', 'book', 'your_text_domain'),
-      'add_new_item' => __('Add New Book', 'your_text_domain'),
-      'edit_item' => __('Edit Book', 'your_text_domain'),
-      'new_item' => __('New Book', 'your_text_domain'),
-      'all_items' => __('All Books', 'your_text_domain'),
-      'view_item' => __('View Book', 'your_text_domain'),
-      'search_items' => __('Search Books', 'your_text_domain'),
-      'not_found' =>  __('No books found', 'your_text_domain'),
-      'not_found_in_trash' => __('No books found in Trash', 'your_text_domain'), 
+      'name' => _x('Books', 'post type general name', 'oomph'),
+      'singular_name' => _x('Book', 'post type singular name', 'oomph'),
+      'add_new' => _x('Add New', 'book', 'oomph'),
+      'add_new_item' => __('Add New Book', 'oomph'),
+      'edit_item' => __('Edit Book', 'oomph'),
+      'new_item' => __('New Book', 'oomph'),
+      'all_items' => __('All Books', 'oomph'),
+      'view_item' => __('View Book', 'oomph'),
+      'search_items' => __('Search Books', 'oomph'),
+      'not_found' =>  __('No books found', 'oomph'),
+      'not_found_in_trash' => __('No books found in Trash', 'oomph'), 
       'parent_item_colon' => '',
-      'menu_name' => __('Books', 'your_text_domain')
+      'menu_name' => __('Books', 'oomph')
     );
 
     $args = array(
@@ -45,7 +41,7 @@ class MyPluginClass {
       'show_ui' => true, 
       'show_in_menu' => true, 
       'query_var' => true,
-      'rewrite' => array( 'slug' => _x( 'book', 'URL slug', 'your_text_domain' ) ),
+      'rewrite' => array( 'slug' => _x( 'book', 'URL slug', 'oomph' ) ),
       'capability_type' => 'post',
       'has_archive' => true, 
       'hierarchical' => false,
@@ -61,7 +57,7 @@ class MyPluginClass {
    * @link http://codex.wordpress.org/Function_Reference/register_taxonomy
    *
   **/
-  function myCustomTaxonomy_create() {
+  function create_taxonomy() {
     $labels = array(
       'name' => _x( 'Genres', 'taxonomy general name' ),
       'singular_name' => _x( 'Genre', 'taxonomy singular name' ),
@@ -91,7 +87,7 @@ class MyPluginClass {
    * @link http://codex.wordpress.org/Function_Reference/add_meta_box
    *
    **/
-  function myCustomPostType_add_meta_boxes() {
+  function add_meta_boxes() {
     add_meta_box( 
       'example_metabox',                      // $id
       'Example Information',                  // $title
@@ -114,7 +110,7 @@ class MyPluginClass {
   </table>
   <?php }
 
-  function myCustomPostType_save_post( $post_id, $post ) { 
+  function save_post( $post_id, $post ) { 
     // verify this came from the our screen and with proper authorization,
     // because save_post can be triggered at other times
     if ( ! array_key_exists( 'book_noncename', $_POST ))
@@ -132,11 +128,11 @@ class MyPluginClass {
     // We'll put it into an array to make it easier to loop though.
 
     //textfields
-    $myCustomMeta[$this->some_key_value] = sanitize_text_field( $_POST[$this->some_key_value] );
+    $oomph_custom_meta[$this->some_key_value] = sanitize_text_field( $_POST[$this->some_key_value] );
     
     
     // Add values of $events_meta as custom fields
-    foreach ( $myCustomMeta as $key => $value ) { // Cycle through the $myCustomMeta array!
+    foreach ( $oomph_custom_meta as $key => $value ) { // Cycle through the $oomph_custom_meta array!
       
       if ( $post->post_type == 'revision' ) return; // Don't store custom data twice
         $value = implode( ',', ( array )$value ); // If $value is an array, make it a CSV (unlikely)
@@ -153,6 +149,4 @@ class MyPluginClass {
   }
 }
 
-global $MyPluginClass;
-if ( !is_a ( $MyPluginClass, 'MyPluginClass' ) )
-  $MyPluginClass = new MyPluginClass();
+oomph_singleton( 'Oomph_Class' );

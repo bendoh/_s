@@ -1,0 +1,16 @@
+/*
+ * =Developer
+ */
+
+ /* =Developer
+-------------------------------------------------------------- */
+#masthead,
+.main-navigation,
+#primary,
+#secondary,
+#colophon {
+  outline: 2px dashed #333;
+}
+.widget-area {
+  background-color: #f2f2f2;
+}
