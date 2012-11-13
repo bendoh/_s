@@ -2,6 +2,9 @@
 
 class Oomph_Class {
 
+  var $post_type = 'some_post_type';
+  var $taxonomy = 'some_taxonomy';
+
   var $some_key_value = '_some_key_value';
   
   function __construct() {
@@ -48,7 +51,7 @@ class Oomph_Class {
       'menu_position' => null,
       'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
     ); 
-    register_post_type( 'book', $args );
+    register_post_type( $this->post_type, $args );
   }
 
   /**
@@ -72,7 +75,7 @@ class Oomph_Class {
       'menu_name' => __( 'Genre' ),
     );  
 
-    register_taxonomy( 'genre', array( 'book' ), array(
+    register_taxonomy( $this->taxonomy, array( $this->post_type ), array(
       'hierarchical' => true,
       'labels' => $labels,
       'show_ui' => true,
@@ -92,7 +95,7 @@ class Oomph_Class {
       'example_metabox',                      // $id
       'Example Information',                  // $title
       array( $this, 'example_add_meta_box' ), // $callback
-      'example',                              // $post_type
+      $this->post_type                        // $post_type
       'normal',                               // $context
       'default'                               // $priority
     );
