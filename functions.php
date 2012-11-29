@@ -39,7 +39,7 @@ function oomph_setup() {
 	/**
 	 * Custom functions that act independently of the theme templates
 	 */
-	//require( get_template_directory() . '/inc/tweaks.php' );
+	require( get_template_directory() . '/inc/extras.php' );
 
 	/**
 	 * Custom Theme Options
