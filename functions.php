@@ -54,7 +54,7 @@ function oomph_setup() {
 	/**
 	 * Theme feature functions and definitions
 	 */
-	//require( get_template_directory() . '/inc/class-oomph-custom-post-type.php' );
+	require( get_template_directory() . '/inc/class-oomph-custom-post-type.php' );
 
 	/**
 	 * Make theme available for translation

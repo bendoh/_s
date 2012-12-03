@@ -9,12 +9,32 @@
 #primary,
 #secondary,
 #colophon {
-  outline: 2px dashed #333;
+	outline: 1px dashed hsla(0,100%,50%,0.125);
 }
+
+#masthead:hover,
+.main-navigation:hover,
+#primary:hover,
+#secondary:hover,
+#colophon:hover {
+	outline: 1px dashed hsla(0,100%,50%,0.5);
+}
+
 .widget-area {
-  background-color: #f2f2f2;
+	outline: 1px dashed hsla(60,100%,60%,0.15);
+	background-color: hsla(60,100%,60%,0.075);
+}
+
+.widget-area:hover {
+	outline: 1px dashed hsla(60,100%,60%,0.3);
+	background-color: hsla(60,100%,60%,0.3);
 }
 
 #responsive-helper {
-	display: none;
+	background-color: red;
+	color: #fff;
+	padding: 8px;
+	position: fixed;
+	top: 50%;
+	left: 0;
 }

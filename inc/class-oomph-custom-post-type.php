@@ -11,7 +11,7 @@ class Oomph_Class {
     add_action( 'init', array( $this, 'create_post_type' ) );
     add_action( 'init', array( $this, 'create_taxonomy' ) );     
     add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );  
-    add_action( 'save_post', array( $this, 'save_post' ) );
+    add_action( 'save_post', array( $this, 'save_post' ), 1, 2 );
   }
 
   /**
@@ -95,19 +95,20 @@ class Oomph_Class {
       'example_metabox',                      // $id
       'Example Information',                  // $title
       array( $this, 'example_add_meta_box' ), // $callback
-      $this->post_type                        // $post_type
+      $this->post_type,                       // $post_type
       'normal',                               // $context
       'default'                               // $priority
     );
   }
   
   function example_add_meta_box( $post ) { ?>
+  <?php $example = get_post_meta( $post->ID, $this->some_key_value, true ); ?>
   <input type="hidden" name="book_noncename" id="book_noncename" value="<?php echo wp_create_nonce( 'book' ); ?>" />
   <table cellpadding="0" cellspacing="0" border="0">
     <tr>
       <td>
         <label for=""></label><br/>
-        <input type="text" name="<?php echo $this->some_key_value ;?>" id="<?php echo $this->some_key_value ;?>" class="widefat" size="30" value="" />
+        <input type="text" name="<?php echo $this->some_key_value ;?>" id="<?php echo $this->some_key_value ;?>" class="widefat" size="30" value="<?php echo esc_attr_e( $example );?>" />
       </td>
     </tr>
   </table>
@@ -119,7 +120,7 @@ class Oomph_Class {
     if ( ! array_key_exists( 'book_noncename', $_POST ))
       return;
   
-    if ( ! wp_verify_nonce( $_POST['book_noncename'], 'MyPluginClass' ) ) {
+    if ( ! wp_verify_nonce( $_POST['book_noncename'], 'book' ) ) {
       return $post->ID;
     }
   
