@@ -2,8 +2,8 @@
 /**
  * The template for displaying Search Results pages.
  *
- * @package Oomph
- * @since Oomph 1.0
+ * @package _s
+ * @since _s 2.0
  */
 
 get_header(); ?>
@@ -14,10 +14,10 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'oomph' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', '_s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				</header><!-- .page-header -->
 
-				<?php oomph_content_nav( 'nav-above' ); ?>
+				<?php _s_content_nav( 'nav-above' ); ?>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -26,7 +26,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php oomph_content_nav( 'nav-below' ); ?>
+				<?php _s_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

@@ -13,8 +13,8 @@
 	<?php } // if ( ! empty( $header_image ) ) ?>
 
  *
- * @package Oomph
- * @since Oomph 1.0
+ * @package _s
+ * @since _s 2.0
  */
 
 /**
@@ -25,27 +25,27 @@
  * Use feature detection of wp_get_theme() which was introduced
  * in WordPress 3.4.
  *
- * @uses oomph_header_style()
- * @uses oomph_admin_header_style()
- * @uses oomph_admin_header_image()
+ * @uses _s_header_style()
+ * @uses _s_admin_header_style()
+ * @uses _s_admin_header_image()
  * @todo Rework this function to remove WordPress 3.4 support when WordPress 3.6 is released.
  *
  *
- * @package Oomph
+ * @package _s
  */
-function oomph_custom_header_setup() {
+function _s_custom_header_setup() {
 	$args = array(
 		'default-image'          => '',
 		'default-text-color'     => '000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'oomph_header_style',
-		'admin-head-callback'    => 'oomph_admin_header_style',
-		'admin-preview-callback' => 'oomph_admin_header_image',
+		'wp-head-callback'       => '_s_header_style',
+		'admin-head-callback'    => '_s_admin_header_style',
+		'admin-preview-callback' => '_s_admin_header_image',
 	);
 
-	$args = apply_filters( 'oomph_custom_header_args', $args );
+	$args = apply_filters( '_s_custom_header_args', $args );
 
 	if ( function_exists( 'wp_get_theme' ) ) {
 		add_theme_support( 'custom-header', $args );
@@ -58,7 +58,7 @@ function oomph_custom_header_setup() {
 		add_custom_image_header( $args['wp-head-callback'], $args['admin-head-callback'], $args['admin-preview-callback'] );
 	}
 }
-add_action( 'after_setup_theme', 'oomph_custom_header_setup' );
+add_action( 'after_setup_theme', '_s_custom_header_setup' );
 
 /**
  * Shiv for get_custom_header().
@@ -71,8 +71,8 @@ add_action( 'after_setup_theme', 'oomph_custom_header_setup' );
  * @todo Remove this function when WordPress 3.6 is released.
  * @return stdClass All properties represent attributes of the curent header image.
  *
- * @package Oomph
- * @since Oomph 1.1
+ * @package _s
+ * @since _s 1.1
  */
 
 if ( ! function_exists( 'get_custom_header' ) ) {
@@ -86,15 +86,15 @@ if ( ! function_exists( 'get_custom_header' ) ) {
 	}
 }
 
-if ( ! function_exists( 'oomph_header_style' ) ) :
+if ( ! function_exists( '_s_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
- * @see oomph_custom_header_setup().
+ * @see _s_custom_header_setup().
  *
- * @since Oomph 1.0
+ * @since _s 2.0
  */
-function oomph_header_style() {
+function _s_header_style() {
 
 	// If no custom options for text are set, let's bail
 	// get_header_textcolor() options: HEADER_TEXTCOLOR is default, hide text (returns 'blank') or any hex value
@@ -125,17 +125,17 @@ function oomph_header_style() {
 	</style>
 	<?php
 }
-endif; // oomph_header_style
+endif; // _s_header_style
 
-if ( ! function_exists( 'oomph_admin_header_style' ) ) :
+if ( ! function_exists( '_s_admin_header_style' ) ) :
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
  *
- * @see oomph_custom_header_setup().
+ * @see _s_custom_header_setup().
  *
- * @since Oomph 1.0
+ * @since _s 2.0
  */
-function oomph_admin_header_style() {
+function _s_admin_header_style() {
 ?>
 	<style type="text/css">
 	.appearance_page_custom-header #headimg {
@@ -155,17 +155,17 @@ function oomph_admin_header_style() {
 	</style>
 <?php
 }
-endif; // oomph_admin_header_style
+endif; // _s_admin_header_style
 
-if ( ! function_exists( 'oomph_admin_header_image' ) ) :
+if ( ! function_exists( '_s_admin_header_image' ) ) :
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  *
- * @see oomph_custom_header_setup().
+ * @see _s_custom_header_setup().
  *
- * @since Oomph 1.0
+ * @since _s 2.0
  */
-function oomph_admin_header_image() { ?>
+function _s_admin_header_image() { ?>
 	<div id="headimg">
 		<?php
 		if ( 'blank' == get_header_textcolor() || '' == get_header_textcolor() )
@@ -181,4 +181,4 @@ function oomph_admin_header_image() { ?>
 		<?php endif; ?>
 	</div>
 <?php }
-endif; // oomph_admin_header_image
+endif; // _s_admin_header_image

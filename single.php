@@ -2,8 +2,8 @@
 /**
  * The Template for displaying all single posts.
  *
- * @package Oomph
- * @since Oomph 1.0
+ * @package _s
+ * @since _s 2.0
  */
 
 get_header(); ?>
@@ -13,11 +13,11 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php oomph_content_nav( 'nav-above' ); ?>
+				<?php _s_content_nav( 'nav-above' ); ?>
 
 				<?php get_template_part( 'content', 'single' ); ?>
 
-				<?php oomph_content_nav( 'nav-below' ); ?>
+				<?php _s_content_nav( 'nav-below' ); ?>
 
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template

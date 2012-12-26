@@ -8,8 +8,8 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package Oomph
- * @since Oomph 1.0
+ * @package _s
+ * @since _s 2.0
  */
 
 get_header(); ?>
@@ -19,7 +19,7 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 
-				<?php oomph_content_nav( 'nav-above' ); ?>
+				<?php _s_content_nav( 'nav-above' ); ?>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -34,7 +34,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php oomph_content_nav( 'nav-below' ); ?>
+				<?php _s_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

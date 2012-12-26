@@ -1,20 +1,32 @@
 <?php
 /**
- * Oomph functions and definitions
+ * _s functions and definitions
  *
- * @package Oomph
- * @since Oomph 1.0
+ * @package _s
+ * @since _s 2.0
  */
+
+/*
+ * VIP functions, per http://lobby.vip.wordpress.com/getting-started/development-environment/
+ */
+
+// Init WP.com VIP environment
+require_once( WP_CONTENT_DIR . '/themes/vip/plugins/vip-init.php' );
+
+// VIP Plugins
+if ( function_exists( 'wpcom_vip_load_plugin' ) ) {
+	//wpcom_vip_load_plugin( 'facebook' );
+}
 
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
- * @since Oomph 1.0
+ * @since _s 2.0
  */
 if ( ! isset( $content_width ) )
 	$content_width = 640; /* pixels */
 
-if ( ! function_exists( 'oomph_setup' ) ):
+if ( ! function_exists( '_s_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -22,9 +34,9 @@ if ( ! function_exists( 'oomph_setup' ) ):
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  *
- * @since Oomph 1.0
+ * @since _s 2.0
  */
-function oomph_setup() {
+function _s_setup() {
 
 	/**
 	 * For VIP use.
@@ -59,10 +71,10 @@ function oomph_setup() {
 	/**
 	 * Make theme available for translation
 	 * Translations can be filed in the /languages/ directory
-	 * If you're building a theme based on Oomph, use a find and replace
-	 * to change 'oomph' to the name of your theme in all the template files
+	 * If you're building a theme based on _s, use a find and replace
+	 * to change '_s' to the name of your theme in all the template files
 	 */
-	//load_theme_textdomain( 'oomph', get_template_directory() . '/languages' );
+	//load_theme_textdomain( '_s', get_template_directory() . '/languages' );
 
 	/**
 	 * Add default posts and comments RSS feed links to head
@@ -78,7 +90,7 @@ function oomph_setup() {
 	 * This theme uses wp_nav_menu() in one location.
 	 */
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'oomph' ),
+		'primary' => __( 'Primary Menu', '_s' ),
 	) );
 
 	/**
@@ -86,17 +98,17 @@ function oomph_setup() {
 	 */
 	add_theme_support( 'post-formats', array( 'aside', ) );
 }
-endif; // oomph_setup
-add_action( 'after_setup_theme', 'oomph_setup' );
+endif; // _s_setup
+add_action( 'after_setup_theme', '_s_setup' );
 
 /**
  * Register widgetized area and update sidebar with default widgets
  *
- * @since Oomph 1.0
+ * @since _s 2.0
  */
-function oomph_widgets_init() {
+function _s_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'Sidebar', 'oomph' ),
+		'name' => __( 'Sidebar', '_s' ),
 		'id' => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
@@ -104,12 +116,12 @@ function oomph_widgets_init() {
 		'after_title' => '</h1>',
 	) );
 }
-add_action( 'widgets_init', 'oomph_widgets_init' );
+add_action( 'widgets_init', '_s_widgets_init' );
 
 /**
  * Enqueue scripts and styles
  */
-function oomph_scripts() {
+function _s_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 	wp_enqueue_style( 'theme', get_template_directory_uri() . '/css/theme.css' );
 	wp_enqueue_style( 'archive', get_template_directory_uri() . '/css/archive.css' );
@@ -132,7 +144,7 @@ function oomph_scripts() {
 		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'oomph_scripts' );
+add_action( 'wp_enqueue_scripts', '_s_scripts' );
 
 /**
  * Implement the Custom Header feature
@@ -148,7 +160,7 @@ add_action( 'wp_enqueue_scripts', 'oomph_scripts' );
  * Placeholder class for radar_singleton that simulates a real object that does absolutely nothing
  * but prevents any code that depends on a missing class from causing fatal errors
  */
-class Oomph_Placeholder {
+class _s_Placeholder {
 	private $placeholder_class = '';
 	private $reason = '';
 
@@ -182,15 +194,15 @@ class Oomph_Placeholder {
  *		the instance's global name
  * @returns object
  */
-function oomph_singleton( $class ) {
+function _s_singleton( $class ) {
 	if ( ! class_exists( $class ) )
-		return new Oomph_Placeholder( $class, 'Class does not exist' );
+		return new _s_Placeholder( $class, 'Class does not exist' );
 
 	if ( ! isset( $GLOBALS[ $class ] ) )
 		$GLOBALS[ $class ] = new $class;
 
 	if ( ! is_a( $GLOBALS[ $class ], $class ) )
-		return new Oomph_Placeholder( $class, "Singleton assertion failed: The global object is not of the type `$class`" );
+		return new _s_Placeholder( $class, "Singleton assertion failed: The global object is not of the type `$class`" );
 
 	return $GLOBALS[ $class ];
 }

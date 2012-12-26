@@ -2,8 +2,8 @@
 /**
  * WordPress.com-specific functions and definitions
  *
- * @package Oomph
- * @since Oomph 1.0
+ * @package _s
+ * @since _s 2.0
  */
 
 global $themecolors;
@@ -12,7 +12,7 @@ global $themecolors;
  * Set a default theme color array for WP.com.
  *
  * @global array $themecolors
- * @since Oomph 1.0
+ * @since _s 2.0
  */
 $themecolors = array(
 	'bg' => '',

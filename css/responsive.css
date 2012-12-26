@@ -1,0 +1,35 @@
+/* =Responsive 320px
+-------------------------------------------------------------- */
+@media all and (max-width: 320px) {
+  #primary,
+  #secondary {
+    float: left;
+    margin-right: 0;
+    width: 300px;
+  }
+}
+
+/* =Responsive 480px
+-------------------------------------------------------------- */
+@media all and (max-width: 480px) {
+  #page {
+    width: 460px;
+  }
+  #primary,
+  #secondary {
+    float: left;
+    margin-right: 0;
+    width: 440px;
+  }
+}
+
+/* =Responsive 768px
+-------------------------------------------------------------- */
+@media all and (max-width: 768px) {
+  #page {
+    width: 748px;
+  }
+  #primary {
+    width: 418px;
+  }
+}
